@@ -1,25 +1,12 @@
-public final class Calculator implements Calculable {
-
-    private int primaryArg;
-
-    public Calculator(int primaryArg) {
-        this.primaryArg = primaryArg;
+public class Calculator {
+    private iOperation operation;
+    public void setOperation(iOperation operation) {
+        this.operation = operation;
     }
-
-    @Override
-    public Calculable sum(int arg) {
-        primaryArg += arg;
-        return this;
-    }
-
-    @Override
-    public Calculable multi(int arg) {
-        primaryArg *= arg;
-        return this;
-    }
-
-    @Override
-    public int getResult() {
-        return primaryArg;
+    public ComplexNumber execute(ComplexNumber a, ComplexNumber b) {
+        if (operation == null) {
+            throw new IllegalStateException("Operation is not set");
+        }
+        return operation.execute(a, b);
     }
 }
